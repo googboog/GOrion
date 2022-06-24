@@ -1,0 +1,47 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/googboog/GOrion/main/source')))()
+
+
+local Window = OrionLib:MakeWindow({
+    Name = "GB Hub",
+    IntroEnabled = true,
+    IntroText = "Plap = Bad"})
+
+local Main = Window:MakeTab({
+	Name = "Main",
+	Icon = "",
+	PremiumOnly = false
+})
+
+Main:AddToggle({
+	Name = "Auto Train",
+	Default = false,
+	Callback = function(Train)
+	while Train == true do
+	    wait()
+        local ohString1 = "Training"
+        local ohInstance2 = workspace.__WORKSPACE.__Interact.Training
+        game:GetService("ReplicatedStorage").Remotes.Training:FireServer(ohString1, ohInstance2)
+		end
+	end    
+})
+
+Main:AddToggle({
+    Name = "Auto Energy",
+	Default = false,
+	Callback = function(Energy)
+	while Energy == true do
+        wait()
+        local ohString1 = "Tapping"
+        game:GetService("ReplicatedStorage").Remotes.Tapping:FireServer(ohString1)
+	    end
+	end
+})
+	
+
+OrionLib:MakeNotification({
+	Name = "Annoucement!",
+	Content = "Plaploo is confirmed bad",
+	Time = 5
+})
+
+OrionLib:Init()
